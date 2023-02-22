@@ -43,13 +43,14 @@
                 </thead>
                 <tbody>
                     {% for workout in workouts %}
-                    
+                    {% if workout.creator.id == user.id %}
                     <tr>
                         <td class="text-center">{{workout.name}}</td>
                         <td class="text-center">{{workout.creator.first_name}} {{workout.creator.last_name}}</td>
                         <td class="text-center">{{workout.likes}}</td>
                         <td class="text-center">
                             <a href="/view_workout/{{workout.id}}">Details</a> 
+                            {% endif %}
                             {% if workout.creator.id == user.id %}
                             | <a href="/edit_workout/{{workout.id}}">Edit</a> |
                             <a href="/destroy_workout/{{workout.id}}">Delete</a>
